@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
 import { SanityLive } from "@/sanity/live";
-import { geistSans, geistMono, inter } from "@/style/font";
+import { financier, ppMori } from "@/style/font";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata = buildMetadata();
@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
+      className={cn("h-full antialiased font-sans", financier.variable, ppMori.variable)}
     >
       <body className="min-h-full flex flex-col">
         <TooltipProvider>{children}</TooltipProvider>

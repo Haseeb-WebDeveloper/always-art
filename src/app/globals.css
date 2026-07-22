@@ -4,41 +4,92 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ============================================================================
+   Always Art design system — Tailwind v4 theme.
+
+   Palette, type scale, easing and container tokens are the resolved values from
+   the brand guidelines (2026) and the HTML prototype. shadcn's semantic tokens
+   (--background, --primary, --border …) are remapped onto the brand palette
+   below so every shadcn/ui component inherits the brand look automatically.
+   ========================================================================= */
 @theme inline {
+  /* ---- shadcn semantic tokens (driven by the :root / .dark values below) --- */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* ---- Brand palette — named utilities: bg-paper, text-ink, bg-sage … ------ */
+  --color-paper: #f0efea; /* Default surface. ~80% of the system. */
+  --color-ink: #2d2d2d; /* Primary text / dark surface. */
+  --color-slate: #5e6b80; /* Cool secondary. Long-form surfaces. */
+  --color-sage: #627b70; /* Quiet accent. Used sparingly. */
+  --color-clay: #867165; /* Warm secondary. Editorial accent. */
+  --color-mist: #abbfb6; /* The single soft accent (light sage). */
+  --color-hairline: #ccc6c4; /* Rules, borders, dashed hairlines. */
+
+  /* ---- Typography ---------------------------------------------------------- */
+  --font-sans: var(--font-sans); /* PP Mori — body / UI (document default). */
+  --font-display: var(--font-display); /* Financier Display — headlines. */
+  --font-serif: var(--font-display);
+  --font-heading: var(--font-display);
+  --font-mono: ui-monospace, "SFMono-Regular", "Menlo", monospace;
+
+  /* Type scale from the 1440px artboard: [font-size]/[line-height]. */
+  --text-micro: 11px;
+  --text-micro--line-height: 17px;
+  --text-label: 13px;
+  --text-label--line-height: 13px;
+  --text-body: 18px;
+  --text-body--line-height: 22px;
+  --text-serif-body: 22px;
+  --text-serif-body--line-height: 28px;
+  --text-lead: 26px;
+  --text-lead--line-height: 30px;
+  --text-stat: 40px;
+  --text-stat--line-height: 48px;
+  --text-h2-sm: 56px;
+  --text-h2-sm--line-height: 60px;
+  --text-h2: 80px;
+  --text-h2--line-height: 88px;
+  --text-h1: 100px;
+  --text-h1--line-height: 104px;
+  --text-display: 200px;
+  --text-display--line-height: 200px;
+
+  /* ---- Motion / layout ----------------------------------------------------- */
+  --ease-aa: cubic-bezier(0.2, 0.8, 0.2, 1); /* The one brand easing curve. */
+  --container-canvas: 1440px; /* max-w-canvas — the artboard width. */
+  --breakpoint-design: 1440px; /* design: variant — full-artboard compositions. */
+
+  /* ---- Radius (base-lyra scale). Kept small: the brand is sharp/editorial. -- */
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -48,83 +99,297 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* ============================================================================
+   Light theme — Paper surface (the default art record).
+   ========================================================================= */
 :root {
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --radius: 0.25rem;
+
+  --background: #f0efea; /* paper */
+  --foreground: #2d2d2d; /* ink */
+  --card: #f6f4ef; /* warm near-white */
+  --card-foreground: #2d2d2d;
+  --popover: #f6f4ef;
+  --popover-foreground: #2d2d2d;
+  --primary: #2d2d2d; /* ink buttons */
+  --primary-foreground: #f0efea;
+  --secondary: #e4e1d7; /* deeper bone */
+  --secondary-foreground: #2d2d2d;
+  --muted: #e4e1d7;
+  --muted-foreground: #6e6b64;
+  --accent: #e4e1d7; /* subtle hover surface; use sage/mist for intent */
+  --accent-foreground: #2d2d2d;
+  --destructive: #a23a2c;
+  --border: #ccc6c4; /* hairline */
+  --input: #ccc6c4;
+  --ring: #5e6b80; /* slate */
+
+  --chart-1: #5e6b80; /* slate */
+  --chart-2: #627b70; /* sage */
+  --chart-3: #867165; /* clay */
+  --chart-4: #abbfb6; /* mist */
+  --chart-5: #2d2d2d; /* ink */
+
+  --sidebar: #f6f4ef;
+  --sidebar-foreground: #2d2d2d;
+  --sidebar-primary: #2d2d2d;
+  --sidebar-primary-foreground: #f0efea;
+  --sidebar-accent: #e4e1d7;
+  --sidebar-accent-foreground: #2d2d2d;
+  --sidebar-border: #ccc6c4;
+  --sidebar-ring: #5e6b80;
 }
 
+/* ============================================================================
+   Dark theme — Ink surface (quiet authority).
+   ========================================================================= */
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: #2d2d2d; /* ink */
+  --foreground: #f0efea; /* paper */
+  --card: #333333;
+  --card-foreground: #f0efea;
+  --popover: #333333;
+  --popover-foreground: #f0efea;
+  --primary: #f0efea; /* paper buttons on ink */
+  --primary-foreground: #2d2d2d;
+  --secondary: #3c3c3c;
+  --secondary-foreground: #f0efea;
+  --muted: #3c3c3c;
+  --muted-foreground: #a8a49b;
+  --accent: #3c3c3c;
+  --accent-foreground: #f0efea;
+  --destructive: #c25a4a;
+  --border: #f0efea24; /* hairline on dark (~14%) */
+  --input: #f0efea2b;
+  --ring: #8a94a6; /* lighter slate */
+
+  --chart-1: #8a94a6;
+  --chart-2: #8aa59a;
+  --chart-3: #a3897b;
+  --chart-4: #abbfb6;
+  --chart-5: #f0efea;
+
+  --sidebar: #262626;
+  --sidebar-foreground: #f0efea;
+  --sidebar-primary: #f0efea;
+  --sidebar-primary-foreground: #2d2d2d;
+  --sidebar-accent: #3c3c3c;
+  --sidebar-accent-foreground: #f0efea;
+  --sidebar-border: #f0efea24;
+  --sidebar-ring: #8a94a6;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
   html {
     @apply font-sans;
   }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+  /* Every interactive element gets the pointer cursor (native buttons default
+     to the arrow cursor otherwise). */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  summary,
+  label[for] {
+    cursor: pointer;
+  }
+  /* Editorial headings default to the Financier display serif. */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+  ::selection {
+    @apply bg-ink text-paper;
+  }
 }
+
+/* ============================================================================
+   Landing components — reusable brand primitives.
+   ========================================================================= */
+@layer components {
+  /* Two page grids, both capped at the 1440 canvas and centred past it.
+     - wide: 20px gutters — full-bleed rules, stat rows, carousels.
+     - aa:   wide gutters that step up to 140px at the design width — headings,
+             copy, tables. */
+  .container-wide {
+    @apply mx-auto w-full max-w-canvas px-5;
+  }
+  .container-aa {
+    @apply mx-auto w-full max-w-canvas px-5 sm:px-10 lg:px-20 xl:px-[140px];
+  }
+
+  /* Figma's 1px-on / 2px-off hairline stroke (horizontal). */
+  .rule-dashed {
+    height: 1px;
+    background-image: repeating-linear-gradient(
+      90deg,
+      var(--color-hairline) 0 1px,
+      transparent 1px 3px
+    );
+  }
+
+  /* Primary CTA — the brand gradient slides across on hover. */
+  .btn-gradient {
+    @apply relative inline-flex items-center justify-center text-paper transition-[background-position,color] duration-500;
+    transition-timing-function: var(--ease-aa);
+    background-image: linear-gradient(
+      115deg,
+      var(--color-slate) 0%,
+      var(--color-slate) 40%,
+      var(--color-sage) 70%,
+      var(--color-clay) 100%
+    );
+    background-size: 300% 100%;
+    background-position: 0% 0%;
+  }
+  .btn-gradient:hover {
+    background-position: 100% 0%;
+  }
+  .btn-gradient:active {
+    @apply opacity-90;
+  }
+
+  /* Hide scrollbars on the snap carousels. */
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Financier display headings. Sets family, weight and a single relative
+     line-height, so size utilities (text-[34px], sm:text-[56px] …) only change
+     the font size — the leading scales with them and never needs a per-size
+     `leading-*` that could leak across breakpoints and crush the text. */
+  .display-heading {
+    @apply font-display font-light;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+}
+
+/* ============================================================================
+   Roles carousel — desktop reveals one card's image to the side on hover; the
+   open card grows by exactly the image column's width while another closes, so
+   the three text columns never reflow. Below lg the image stacks under the text
+   and the strip is a plain scroll-snap carousel. (Unlayered so the min-width
+   overrides beat the base rule by source order.)
+   ========================================================================= */
+.roles-strip {
+  --role-img: 280px;
+  --role-gap: 40px;
+  --role-text: calc((100% - 2 * var(--role-gap) - var(--role-img)) / 3);
+}
+.role-rule {
+  height: 1px;
+  flex: none;
+  background-color: color-mix(in srgb, var(--color-ink) 30%, transparent);
+}
+.role-title {
+  width: fit-content;
+}
+.role-title::after {
+  content: "";
+  display: block;
+  height: 5px;
+  margin-top: 16px;
+  background-color: var(--color-slate);
+}
+.role-card {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+}
+.role-inner {
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+}
+.role-text {
+  display: flex;
+  flex-direction: column;
+}
+.role-media {
+  margin-top: 1rem;
+}
+.role-media > img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+@media (min-width: 640px) {
+  .role-card {
+    width: calc((100% - 24px) / 2);
+  }
+}
+@media (min-width: 1024px) {
+  .role-card {
+    width: var(--role-text);
+    transition: width 600ms var(--ease-aa);
+  }
+  .role-card[data-active="true"] {
+    width: calc(var(--role-text) + var(--role-img));
+  }
+  .role-inner {
+    min-height: 300px;
+    flex-direction: row;
+  }
+  .role-text {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding-right: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+  .role-media {
+    margin-top: 0;
+    flex: 0 0 auto;
+    width: 0;
+    overflow: hidden;
+    transition: width 600ms var(--ease-aa);
+  }
+  .role-card[data-active="true"] .role-media {
+    width: var(--role-img);
+  }
+  .role-media > img {
+    width: var(--role-img);
+    height: 100%;
+    max-width: none;
+    aspect-ratio: auto;
+  }
+}
+
+/* ============================================================================
+   Footer sitemap — collapsed to the bar at rest; the toggle expands the columns
+   upward (0fr → 1fr) so the copyright bar stays pinned to the bottom.
+   ========================================================================= */
+.footer-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 600ms var(--ease-aa);
+}
+.footer-panel[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+.footer-panel > div {
+  overflow: hidden;
+}
+.footer-toggle svg {
+  transition: transform 400ms var(--ease-aa);
+}
+.footer-toggle[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .role-card,
+  .role-media,
+  .footer-panel {
+    transition-duration: 0.01ms;
+  }
+}
+

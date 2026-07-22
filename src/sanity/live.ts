@@ -12,8 +12,15 @@ import { defineLive } from "next-sanity/live";
 import { apiVersion } from "./env";
 import { client } from "./client";
 
+// `?? false` silences next-sanity's "no token" warnings while the token is
+// unset (published content still fetches + responds to live events). Add a
+// Viewer-rights token to SANITY_API_READ_TOKEN and draft preview lights up
+// automatically. The browser token is shared with the client, so it must never
+// exceed Viewer rights.
+const readToken = process.env.SANITY_API_READ_TOKEN ?? false;
+
 export const { sanityFetch, SanityLive } = defineLive({
   client: client.withConfig({ apiVersion }),
-  serverToken: process.env.SANITY_API_READ_TOKEN,
-  browserToken: process.env.SANITY_API_READ_TOKEN,
+  serverToken: readToken,
+  browserToken: readToken,
 });
