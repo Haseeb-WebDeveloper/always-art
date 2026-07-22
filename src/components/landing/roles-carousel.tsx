@@ -13,10 +13,16 @@ import { ArrowRight } from "./icons";
  * Below lg the image stacks under the text and it's a plain scroll-snap strip.
  * All sizing lives in CSS (`.roles-strip`); this only moves `data-active`.
  */
-export function RolesCarousel({ roles }: { roles: Role[] }) {
+export function RolesCarousel({
+  roles,
+  initialActive = 1,
+}: {
+  roles: Role[];
+  /** Which card opens at rest (index). Home: Galleries is 2nd (1). */
+  initialActive?: number;
+}) {
   const stripRef = useRef<HTMLUListElement>(null);
-  // Galleries open by default, matching the prototype's rest state.
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(initialActive);
 
   const perPage = () => {
     if (window.matchMedia("(min-width: 1024px)").matches) return 3;
@@ -91,9 +97,17 @@ export function RolesCarousel({ roles }: { roles: Role[] }) {
                 <p className="mt-4 text-[14px] leading-5 text-foreground/60">
                   {role.description}
                 </p>
-                <p className="mt-auto pt-8 text-micro font-semibold uppercase tracking-[0.05em] text-foreground/55">
-                  {role.tags}
-                </p>
+                <div className="mt-auto pt-8">
+                  <p className="text-micro font-semibold uppercase tracking-[0.05em] text-foreground/55">
+                    {role.tags}
+                  </p>
+                  {role.href && (
+                    <a href={role.href} className="tile-link mt-4">
+                      {role.linkLabel}
+                      <ArrowRight className="h-2.5 w-4 shrink-0" />
+                    </a>
+                  )}
+                </div>
               </div>
               <div className="role-media">
                 {/* Plain <img>: the reveal needs a fixed-width image the column

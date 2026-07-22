@@ -15,6 +15,9 @@ export type Role = {
   description: string;
   tags: string;
   image: string;
+  /** Optional per-card link (used on the For Every Role page). */
+  href?: string;
+  linkLabel?: string;
 };
 
 export const ROLES: Role[] = [
@@ -59,6 +62,64 @@ export const ROLES: Role[] = [
       "Build on records that already exist. Exhibition history, loans, and conservation land on the same foundation the work arrived on. Scholarship that compounds instead of starting over.",
     tags: "Exhibition history, loan records, conservation, research access",
     image: "/images/role-institutions.webp",
+  },
+];
+
+/** Roles for the "For Every Role" page — Galleries first, with per-card links. */
+export const ROLE_TILES: Role[] = [
+  {
+    name: "Galleries",
+    description:
+      "Your program, relationships, and inventory get a permanent home, and the collector connections you build stay yours.",
+    tags: "Inventory · Viewing rooms · Collector pipeline · Portable provenance",
+    image: "/images/role-galleries.webp",
+    href: "#",
+    linkLabel: "See how it works for galleries",
+  },
+  {
+    name: "Artists",
+    description:
+      "A permanent record for every work and a career that stays connected across every gallery, show, and collector, with or without representation.",
+    tags: "Career record · Audience tools · Linked accounts · Lasting collector ties",
+    image: "/images/role-artists.webp",
+    href: "#",
+    linkLabel: "See how it works for artists",
+  },
+  {
+    name: "Collectors",
+    description:
+      "A private, permanent record of your collection with provenance on every acquisition, held independent of any gallery or platform that comes or goes.",
+    tags: "Private collection · Provenance · Discovery · Gallery relationships",
+    image: "/images/role-collectors.webp",
+    href: "#",
+    linkLabel: "See how it works for collectors",
+  },
+  {
+    name: "Fairs",
+    description:
+      "The anchor that carries its ecosystem between editions, with data flowing back to every gallery and every interaction traced to its source.",
+    tags: "Exhibitor management · Collector attribution · Edition continuity",
+    image: "/images/role-fairs.webp",
+    href: "#",
+    linkLabel: "See how it works for fairs",
+  },
+  {
+    name: "Estates",
+    description:
+      "Legacy anchored in a record that spans decades, so authorship and provenance are inherited intact rather than reconstructed from fragments.",
+    tags: "Authorship · Catalogue support · Provenance · Legacy continuity",
+    image: "/images/role-estates.webp",
+    href: "#",
+    linkLabel: "See how it works for estates",
+  },
+  {
+    name: "Institutions",
+    description:
+      "Build on records that already exist, exhibition history, loans, conservation, and provenance connected to the same foundation the work arrived on.",
+    tags: "Exhibition history · Loan records · Conservation · Research access",
+    image: "/images/role-institutions.webp",
+    href: "#",
+    linkLabel: "See how it works for institutions",
   },
 ];
 

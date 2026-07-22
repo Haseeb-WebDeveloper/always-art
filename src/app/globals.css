@@ -1,4 +1,5 @@
 @import "tailwindcss";
+/* Always Art — global styles + brand design system. */
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
@@ -322,6 +323,26 @@
   aspect-ratio: 3 / 2;
   object-fit: cover;
 }
+
+/* Small caps label with an arrow and a hairline underline that darkens on
+   hover — the "See how it works for …" links on the role cards. */
+.tile-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: underline;
+  text-decoration-color: var(--color-hairline);
+  text-underline-offset: 6px;
+  transition: text-decoration-color 200ms var(--ease-aa);
+}
+.tile-link:hover {
+  text-decoration-color: currentColor;
+}
+
 @media (min-width: 640px) {
   .role-card {
     width: calc((100% - 24px) / 2);
