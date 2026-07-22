@@ -1,0 +1,19 @@
+packages:
+  - studio-alwaysart
+
+allowBuilds:
+  sharp: true
+  unrs-resolver: true
+  '@sanity/pkg-utils': true
+  esbuild: true
+minimumReleaseAgeExclude:
+  - '@sanity/icons@5.2.0'
+  - '@sanity/visual-editing@5.6.0'
+  - next-sanity@13.1.5
+# Approve these packages to run their post-install build scripts. pnpm blocks
+# build scripts by default (a supply-chain safeguard); this allowlist re-enables
+# them. sharp powers next/image optimization; unrs-resolver is the native
+# resolver used by ESLint's import plugin.
+onlyBuiltDependencies:
+  - sharp
+  - unrs-resolver
