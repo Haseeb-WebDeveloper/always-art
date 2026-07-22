@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 
 import { FOOTER_NAV, FOOTER_LEGAL } from "@/lib/content/landing";
+import { scrollToBottom } from "@/lib/scroll";
 
 export function SiteFooter() {
   const [open, setOpen] = useState(false);
@@ -20,12 +21,8 @@ export function SiteFooter() {
     const gen = ++followGen.current;
     let stopped = false;
 
-    const toBottom = () => {
-      const y = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
-      // Route through Lenis when it's driving the scroll, else native.
-      if (window.lenis) window.lenis.scrollTo(y, { immediate: true });
-      else window.scrollTo(0, y);
-    };
+    // Route through Lenis when it's driving the scroll, else native.
+    const toBottom = () => scrollToBottom();
 
     const stop = () => {
       if (stopped) return;

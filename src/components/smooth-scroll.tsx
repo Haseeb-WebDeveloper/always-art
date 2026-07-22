@@ -4,14 +4,7 @@ import { useEffect } from "react";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 
-declare global {
-  interface Window {
-    /** The active Lenis instance, so components can drive programmatic scroll
-     *  through it (e.g. the footer's expand-and-follow). Undefined when smooth
-     *  scrolling is off (reduced motion) — callers fall back to native scroll. */
-    lenis?: Lenis;
-  }
-}
+import { setLenis } from "@/lib/scroll";
 
 /**
  * Site-wide smooth scrolling via Lenis. Renders nothing — it drives the window
@@ -36,7 +29,7 @@ export function SmoothScroll() {
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smoothWheel: true,
       });
-      window.lenis = lenis;
+      setLenis(lenis);
       const loop = (time: number) => {
         lenis?.raf(time);
         rafId = requestAnimationFrame(loop);
@@ -48,7 +41,7 @@ export function SmoothScroll() {
       cancelAnimationFrame(rafId);
       lenis?.destroy();
       lenis = null;
-      window.lenis = undefined;
+      setLenis(null);
     };
 
     start();
