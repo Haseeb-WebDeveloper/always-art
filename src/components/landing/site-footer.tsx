@@ -20,8 +20,12 @@ export function SiteFooter() {
     const gen = ++followGen.current;
     let stopped = false;
 
-    const toBottom = () =>
-      window.scrollTo(0, Math.max(0, document.documentElement.scrollHeight - window.innerHeight));
+    const toBottom = () => {
+      const y = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+      // Route through Lenis when it's driving the scroll, else native.
+      if (window.lenis) window.lenis.scrollTo(y, { immediate: true });
+      else window.scrollTo(0, y);
+    };
 
     const stop = () => {
       if (stopped) return;
@@ -66,7 +70,7 @@ export function SiteFooter() {
         inert={!open}
       >
         <div>
-          <div className="container-wide pt-12 lg:pt-[82px]">
+          <div className="container-wide pt-12 lg:pt-[70px]">
             <div className="grid grid-cols-2 gap-x-10 gap-y-12 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] lg:gap-x-[60px]">
               <div className="col-span-2 lg:col-span-1">
                 <span className="block font-display text-[30px] font-light leading-none">
@@ -106,7 +110,7 @@ export function SiteFooter() {
       </div>
 
       <div className="container-wide">
-        <div className="flex flex-col items-center gap-4 py-8 text-[12px] sm:flex-row sm:justify-between lg:py-[26px]">
+        <div className="flex flex-col items-center gap-4 py-8 text-[12px] sm:flex-row sm:justify-between lg:py-[16px]">
           <p className="opacity-50">© 2026 Always Art PBC</p>
           <div className="flex items-center gap-[30px]">
             {FOOTER_LEGAL.map((link) => (

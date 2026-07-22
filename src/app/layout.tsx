@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
 import { SanityLive } from "@/sanity/live";
+import { SmoothScroll } from "@/components/smooth-scroll";
 import { financier, ppMori } from "@/style/font";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -19,6 +20,7 @@ export default function RootLayout({
       className={cn("h-full antialiased font-sans", financier.variable, ppMori.variable)}
     >
       <body className="min-h-full flex flex-col">
+        <SmoothScroll />
         <TooltipProvider>{children}</TooltipProvider>
         <Toaster />
         <SanityLive />
