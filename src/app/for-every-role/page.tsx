@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/landing/site-header";
 import { SiteFooter } from "@/components/landing/site-footer";
 import { PageHero } from "@/components/landing/page-hero";
 import { CtaBand } from "@/components/landing/cta-band";
+import { PageGuides } from "@/components/landing/page-guides";
 import { RolesCarousel } from "@/components/landing/roles-carousel";
 
 export const metadata = buildMetadata({
@@ -20,7 +21,8 @@ export default function ForEveryRolePage() {
   return (
     <>
       <SiteHeader />
-      <main id="main" className="flex-1">
+      <main id="main" className="relative flex-1">
+        <PageGuides />
         <PageHero
           eyebrow="For Every Role"
           title="The art world has always been built on distinct roles."
@@ -40,7 +42,8 @@ export default function ForEveryRolePage() {
         </section>
 
         {/* Real tools for every role */}
-        <section className="bg-white text-ink">
+        <section className="relative bg-white text-ink">
+          <PageGuides />
           <div className="container-aa pb-16 pt-16 lg:pb-[100px] lg:pt-[90px]">
             <p className="reveal text-label font-semibold uppercase tracking-[0.12em] text-ink/50">
               Real tools for every role
@@ -54,7 +57,7 @@ export default function ForEveryRolePage() {
                 <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ink/50">
                   Most art software
                 </p>
-                <p className="mt-6 font-display text-[17px] leading-[24px] sm:text-serif-body">
+                <p className="mt-6 font-display text-[17px]  sm:text-serif-body">
                   Built for a single role and everything else is that same product
                   with the labels changed, a collector view that&rsquo;s really a
                   sales pipeline, an artist account built to feed someone
@@ -66,7 +69,7 @@ export default function ForEveryRolePage() {
                 <p className="text-[11px] font-semibold uppercase tracking-[0.12em] opacity-70">
                   Always Art
                 </p>
-                <p className="mt-6 font-display text-[17px] leading-[24px] sm:text-serif-body">
+                <p className="mt-6 font-display text-[17px]  sm:text-serif-body">
                   Built the other way. Each role has its own portal and its own
                   tools, shaped around the work that role actually does, all reading
                   from and writing to one shared record.
@@ -78,7 +81,7 @@ export default function ForEveryRolePage() {
               <h3 className="font-display text-[22px] leading-7 lg:text-lead">
                 One person, more than one role
               </h3>
-              <p className="mt-4 max-w-[820px] text-[16px] leading-6 text-ink/60 lg:text-body">
+              <p className="mt-4 max-w-[820px] text-[16px] text-ink/60 lg:text-body">
                 A gallerist who also collects. An artist who runs a space. Hold
                 both, and move between full, separate portals with a single toggle,
                 no second account, no second login. It&rsquo;s a capability you can
@@ -89,7 +92,8 @@ export default function ForEveryRolePage() {
         </section>
 
         {/* Independent by default */}
-        <section className="bg-ink text-paper">
+        <section className="relative bg-ink text-paper">
+          <PageGuides dim />
           <div className="container-aa pb-16 pt-16 lg:pb-[110px] lg:pt-[110px]">
             <p className="reveal text-label font-semibold uppercase tracking-[0.12em] text-paper/60">
               Independent by default. Connected by choice.
@@ -140,7 +144,7 @@ export default function ForEveryRolePage() {
           <h2 className="reveal mx-auto mt-6 max-w-[720px] display-heading text-[34px] sm:text-[52px] lg:mt-7 lg:text-[56px]">
             Nothing changes. Everything lasts.
           </h2>
-          <p className="reveal mx-auto mt-8 max-w-[620px] text-[16px] leading-6 text-foreground/60 lg:mt-12 lg:text-body">
+          <p className="reveal mx-auto mt-8 max-w-[630px] text-[16px] text-balance leading-6 text-foreground/60 lg:mt-12 lg:text-body">
             No role changes. No workflow changes. There&rsquo;s nothing new to
             learn. The foundation sits beneath what each participant already does,
             the same record, the same tools, the same protections for everyone, and

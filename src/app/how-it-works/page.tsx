@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/landing/site-header";
 import { SiteFooter } from "@/components/landing/site-footer";
 import { PageHero } from "@/components/landing/page-hero";
 import { CtaBand } from "@/components/landing/cta-band";
+import { PageGuides } from "@/components/landing/page-guides";
 import { MarketplacesDiagram } from "@/components/landing/diagrams";
 
 export const metadata = buildMetadata({
@@ -68,7 +69,8 @@ export default function HowItWorksPage() {
   return (
     <>
       <SiteHeader />
-      <main id="main" className="flex-1">
+      <main id="main" className="relative flex-1">
+        <PageGuides />
         <PageHero
           eyebrow="How It Works"
           title="One record. Built once, extended forever."
@@ -115,7 +117,7 @@ export default function HowItWorksPage() {
                   </dt>
                   <dd>
                     <p className="font-display text-[18px] leading-6 lg:text-lead">{row.value}</p>
-                    <p className="mt-1 text-[14px] leading-5 text-foreground/55">{row.sub}</p>
+                    <p className="mt-1 text-[14px]  text-foreground/55">{row.sub}</p>
                   </dd>
                 </div>
               ))}
@@ -130,7 +132,8 @@ export default function HowItWorksPage() {
         </section>
 
         {/* How the record earns its authority */}
-        <section className="bg-white text-ink">
+        <section className="relative bg-white text-ink">
+          <PageGuides />
           <div className="container-aa pb-16 pt-16 lg:pb-[100px] lg:pt-[90px]">
             <div className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2 lg:gap-[70px]">
               <div className="reveal relative min-h-[320px] overflow-hidden bg-hairline/40 lg:min-h-[520px]">
@@ -176,7 +179,8 @@ export default function HowItWorksPage() {
         </section>
 
         {/* The Operating System */}
-        <section className="bg-ink text-paper">
+        <section className="relative bg-ink text-paper">
+          <PageGuides dim />
           <div className="container-aa pb-16 pt-16 lg:pb-[110px] lg:pt-[110px]">
             <p className="reveal text-label font-semibold uppercase tracking-[0.12em] text-paper/60">
               The Operating System
@@ -209,7 +213,8 @@ export default function HowItWorksPage() {
         </section>
 
         {/* Marketplaces */}
-        <section className="bg-white text-ink">
+        <section className="relative bg-white text-ink">
+          <PageGuides />
           <div className="container-aa pb-16 pt-16 lg:pb-[100px] lg:pt-[90px]">
             <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-[80px]">
               <div className="reveal">

@@ -6,13 +6,13 @@ export function TensionTable() {
   const columns = [
     {
       data: TENSION.existing,
-      col: "bg-ink/5 text-ink",
+      col: "bg-ink/5 text-ink border-b border-[#2d2d2d1f]", // ink ~12%
       head: "text-ink/50",
       cell: "shadow-[inset_0_1px_0_#2d2d2d1f]", // ink ~12%
     },
     {
       data: TENSION.foundation,
-      col: "bg-sage text-paper",
+      col: "bg-sage text-paper border-b border-[#f0efea33]", // paper ~20%
       head: "text-paper/60",
       cell: "shadow-[inset_0_1px_0_#f0efea33]", // paper ~20%
     },
@@ -30,19 +30,20 @@ export function TensionTable() {
             <div key={data.title} className={col}>
               <p
                 className={cn(
-                  "px-5 pb-2 pt-5 text-label font-semibold uppercase tracking-[0.12em] sm:px-8 sm:pt-6",
+                  "px-5 text-label font-semibold uppercase tracking-[0.12em] sm:px-8 leading-[100%] pt-6 sm:pt-7 pb-4 sm:pb-5",
                   head,
                 )}
               >
                 {data.title}
               </p>
-              {data.rows.map((row, i) => (
+              {data.rows.map((row) => (
                 <div
                   key={row}
                   className={cn(
-                    "box-border px-5 py-5 font-display text-[17px] leading-[22px] sm:px-8 sm:py-6 sm:text-serif-body",
-                    // First cell of each column has no top hairline.
-                    i > 0 && cell,
+                    "box-border px-5 py-5 font-display text-[17px] sm:px-8 sm:py-6 sm:text-serif-body",
+                    // Hairline above every row, including the first — so the
+                    // heading row is divided from the cells below it.
+                    cell,
                   )}
                 >
                   {row}
@@ -52,7 +53,7 @@ export function TensionTable() {
           ))}
         </div>
 
-        <p className="mt-12 text-center text-[16px] leading-5 text-foreground/60 lg:mt-16 lg:text-body">
+        <p className="mt-12 text-center text-[16px]  text-foreground/60 lg:mt-16 lg:text-body">
           They can copy what we built. They can&rsquo;t copy what we refuse to
           do.
         </p>

@@ -91,10 +91,10 @@ export function RolesCarousel({
             <div className="role-rule" />
             <div className="role-inner">
               <div className="role-text">
-                <h3 className="role-title mt-6 font-display text-[22px] leading-[26px] lg:text-lead">
+                <h3 className="mt-6 font-display text-[22px] leading-[26px] lg:text-lead">
                   {role.name}
                 </h3>
-                <p className="mt-4 text-[14px] leading-5 text-foreground/60">
+                <p className="mt-4 text-[14px]  text-foreground/60">
                   {role.description}
                 </p>
                 <div className="mt-auto pt-8">

@@ -1,10 +1,12 @@
 import { ROLES } from "@/lib/content/landing";
 import { RolesCarousel } from "./roles-carousel";
 import { SectionLink } from "./section-link";
+import { SectionGuides, FIVE_COL } from "./page-guides";
 
 export function RolesSection() {
   return (
-    <section id="roles" className="container-wide scroll-mt-8 pb-16 lg:pb-[67px]">
+    <section id="roles" className="relative container-wide scroll-mt-8 pb-16 lg:pb-[67px]">
+      <SectionGuides lines={FIVE_COL} />
       <div className="lg:pl-16">
         <p className="reveal text-label font-semibold uppercase tracking-[0.12em] text-foreground/50">
           Complete tools for every role
@@ -22,7 +24,7 @@ export function RolesSection() {
         <RolesCarousel roles={ROLES} />
       </div>
 
-      <p className="reveal mt-12 text-center text-[16px] leading-5 text-foreground/60 lg:mt-[60px] lg:text-body">
+      <p className="reveal mt-12 text-center text-[16px]  text-foreground/60 lg:mt-[60px] lg:text-body">
         Every tool a role needs is included. Nothing essential sits behind a paid
         tier.
       </p>

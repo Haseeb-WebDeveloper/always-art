@@ -69,7 +69,7 @@ export function SiteFooter() {
       >
         <div>
           <div className="container-wide pt-12 lg:pt-[70px]">
-            <div className="grid grid-cols-2 gap-x-10 gap-y-12 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] lg:gap-x-[60px]">
+            <div className="grid grid-cols-2 gap-x-10 gap-y-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] lg:gap-x-[60px] lg:pl-[100px]">
               <div className="col-span-2 lg:col-span-1">
                 <Wordmark className="text-paper" size="h-11 lg:h-12" />
                 <p className="mt-8 max-w-[300px] font-display text-serif-body leading-[26px] opacity-85">
@@ -103,7 +103,7 @@ export function SiteFooter() {
       </div>
 
       <div className="container-wide">
-        <div className="flex flex-col items-center gap-4 py-8 text-[12px] sm:flex-row sm:justify-between lg:py-[16px]">
+        <div className="flex flex-col items-center gap-4 py-8 text-[12px] sm:flex-row sm:justify-between lg:px-[100px] lg:py-[16px]">
           <p className="opacity-50">© 2026 Always Art PBC</p>
           <div className="flex items-center gap-[30px]">
             {FOOTER_LEGAL.map((link) => (

@@ -269,7 +269,7 @@
   .display-heading {
     @apply font-display font-light;
     line-height: 1.08;
-    text-wrap: balance;
+    /* text-wrap: balance; */
   }
 }
 
@@ -285,41 +285,13 @@
   --role-gap: 40px;
   --role-text: calc((100% - 2 * var(--role-gap) - var(--role-img)) / 3);
 }
+/* The bold rule that caps each card top and bottom — 5px slate to match the
+   weight and colour of the SectionLink underline ("Find your role") in this
+   same section. */
 .role-rule {
-  height: 1px;
+  height: 5px;
   flex: none;
-  background-color: color-mix(in srgb, var(--color-ink) 30%, transparent);
-}
-.role-title {
-  position: relative;
-  width: fit-content;
-}
-/* Static slate base bar under the title. */
-.role-title::after {
-  content: "";
-  display: block;
-  height: 5px;
-  margin-top: 6px;
   background-color: var(--color-slate);
-}
-/* Ink bar that wipes in over the slate base to highlight the active card — the
-   one showing its image. Desktop only; below lg every card shows its image so
-   there's no single "active" to single out. */
-.role-title::before {
-  content: "";
-  position: absolute;
-  inset-inline: 0;
-  bottom: 0;
-  height: 5px;
-  background-color: var(--color-ink);
-  transform: scaleX(0);
-  transform-origin: 0 50%;
-  transition: transform 350ms var(--ease-aa);
-}
-@media (min-width: 1024px) {
-  .role-card[data-active="true"] .role-title::before {
-    transform: scaleX(1);
-  }
 }
 .role-card {
   display: flex;
@@ -450,6 +422,99 @@
   .timeline-card {
     width: 22%;
   }
+}
+
+/* ── Figma layout guides ─────────────────────────────────────────────────────
+   Faint vertical dashed columns running down each band, exactly as the
+   reference. Two variants toggled at sm:
+     · .pg-mobile (< sm): the section content box (viewport − the 20px px-5
+       gutter each side, capped at 1400px) with 4 lines — the outer two on the
+       gutter, the inner two at the thirds.
+     · .pg-desktop (≥ sm): the 5 columns across the 1440 artboard
+       (16.67 / 33.33 / 50 / 66.67 / 83.33%).
+   Painted at z-index:-1 so they sit behind content; the :has-isolate rule below
+   makes the host a stacking context so that negative layer stays ABOVE the
+   band's own background instead of escaping behind the whole page. The host
+   also needs `position: relative` (add `relative` in markup) to anchor them.
+   Decorative, aria-hidden, pointer-events:none — trivial to pull back out. */
+:has(> .page-guides),
+:has(> .guides) {
+  isolation: isolate;
+}
+.page-guides {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+  pointer-events: none;
+}
+.pg-mobile {
+  width: calc(100% - 40px);
+  max-width: 1400px;
+}
+.pg-desktop {
+  width: 100%;
+  max-width: var(--container-canvas);
+}
+@media (min-width: 640px) {
+  .pg-mobile {
+    display: none;
+  }
+}
+@media (max-width: 639.98px) {
+  .pg-desktop {
+    display: none;
+  }
+}
+.page-guides > span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-image: repeating-linear-gradient(
+    180deg,
+    var(--color-hairline) 0 1px,
+    transparent 1px 3px
+  );
+}
+/* Dark bands drop the guides right back, matching the reference. */
+.guides-dim {
+  opacity: 0.15;
+}
+
+/* Landing per-block guides — the reference draws these ONLY on desktop (lg+),
+   with bespoke column positions per block, and leaves several blocks blank
+   (the sale, the tension table). Distinct from the always-on, uniform
+   .page-guides used on the subpages. Each `.guides` fills its own block (the
+   host must be `relative`); the :has-isolate rule above keeps the -1 layer
+   above the block's background. */
+:root {
+  --guides: none;
+}
+@media (min-width: 1024px) {
+  :root {
+    --guides: block;
+  }
+}
+.guides {
+  display: var(--guides);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.guides > span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-image: repeating-linear-gradient(
+    180deg,
+    var(--color-hairline) 0 1px,
+    transparent 1px 3px
+  );
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -35,7 +35,7 @@ export function SectionLink({
     <Link
       href={href}
       className={cn(
-        "group inline-flex items-center gap-2.5 text-[14px] leading-[14px] font-semibold uppercase tracking-[0.04em]",
+        "group inline-flex items-center gap-2.5 text-[14px] leading-[14px] font-semibold uppercase tracking-tight",
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current",
         className,
       )}

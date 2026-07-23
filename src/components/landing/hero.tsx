@@ -1,10 +1,12 @@
 import Link from "next/link";
 
 import { CtaButton } from "./cta-button";
+import { SectionGuides, FIVE_COL } from "./page-guides";
 
 export function Hero() {
   return (
-    <section className="container-aa pb-16 pt-14 sm:pt-20 lg:pb-[180px] lg:pt-[100px]">
+    <section className="relative container-aa pb-16 pt-14 sm:pt-20 lg:pb-[180px] lg:pt-[100px]">
+      <SectionGuides lines={FIVE_COL} />
       <h1 className="reveal mx-auto max-w-[1159px] text-center display-heading text-[36px] sm:text-[56px] lg:text-[80px]">
         The art world runs on relationships. <br /> Now its tools do too.
       </h1>

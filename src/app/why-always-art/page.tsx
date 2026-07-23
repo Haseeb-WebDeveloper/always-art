@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/landing/site-header";
 import { SiteFooter } from "@/components/landing/site-footer";
 import { PageHero } from "@/components/landing/page-hero";
 import { CtaBand } from "@/components/landing/cta-band";
+import { PageGuides } from "@/components/landing/page-guides";
 import { TrustDiagram } from "@/components/landing/diagrams";
 
 export const metadata = buildMetadata({
@@ -55,7 +56,8 @@ export default function WhyAlwaysArtPage() {
   return (
     <>
       <SiteHeader />
-      <main id="main" className="flex-1">
+      <main id="main" className="relative flex-1">
+        <PageGuides />
         <PageHero
           eyebrow="Why Always Art"
           title="A foundation is only as good as what keeps it one."
@@ -102,7 +104,8 @@ export default function WhyAlwaysArtPage() {
         </section>
 
         {/* We are not one of the roles */}
-        <section className="bg-white text-ink">
+        <section className="relative bg-white text-ink">
+          <PageGuides />
           <div className="container-aa pb-16 pt-16 lg:pb-[100px] lg:pt-[90px]">
             <div className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2 lg:gap-[70px]">
               <div className="order-2 reveal flex flex-col justify-center lg:order-1">
@@ -137,7 +140,8 @@ export default function WhyAlwaysArtPage() {
         </section>
 
         {/* Trust is earned, not declared */}
-        <section className="bg-ink text-paper">
+        <section className="relative bg-ink text-paper">
+          <PageGuides dim />
           <div className="container-aa pb-16 pt-16 lg:pb-[100px] lg:pt-[90px]">
             <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-[70px]">
               <div className="reveal">
@@ -164,7 +168,8 @@ export default function WhyAlwaysArtPage() {
         </section>
 
         {/* What makes the promise binding */}
-        <section className="bg-white text-ink">
+        <section className="relative bg-white text-ink">
+          <PageGuides />
           <div className="container-aa pb-16 pt-16 text-center lg:pb-[100px] lg:pt-[100px]">
             <p className="reveal text-label font-semibold uppercase tracking-[0.12em] text-ink/50">
               What makes the promise binding

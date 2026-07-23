@@ -3,6 +3,7 @@ import Image from "next/image";
 import { SUSTAIN_FAQS } from "@/lib/content/landing";
 import { hexClip } from "./shapes";
 import { SectionLink } from "./section-link";
+import { SectionGuides } from "./page-guides";
 
 /** "How it sustains." — a centred column of question → answer. */
 export function HowItSustains() {
@@ -12,7 +13,8 @@ export function HowItSustains() {
         <div className="rule-dashed" />
       </div>
 
-      <div className="container-aa pb-16 pt-12 lg:pb-[100px] lg:pt-10">
+      <div className="relative container-aa pb-16 pt-12 lg:pb-[100px] lg:pt-10">
+        <SectionGuides lines={["50%", "75%"]} />
         <h2 className="reveal text-center display-heading text-[34px] sm:text-[56px] lg:text-[80px]">
           How it sustains.
         </h2>
@@ -56,7 +58,7 @@ function FaqBlock({ faq }: { faq: (typeof SUSTAIN_FAQS)[number] }) {
       {faq.answer.map((paragraph, i) => (
         <p
           key={i}
-          className="mt-4 text-[16px] leading-5 text-foreground/60 first:mt-5 lg:text-body lg:first:mt-7"
+          className="mt-4 text-[16px] text-foreground/60 first:mt-5 lg:text-body lg:first:mt-7 text-balance"
         >
           {paragraph}
         </p>

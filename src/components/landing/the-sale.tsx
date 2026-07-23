@@ -28,13 +28,13 @@ export function TheSale() {
           </div>
 
           <div className="reveal max-w-[440px]">
-            <p className="font-display text-[19px] leading-[24px] lg:text-lead">
+            <p className="font-display text-[19px] lg:text-lead">
               Every existing tool is built for one role and one moment: the sale.
               Inventory software for the gallery. A tracker for the collector. A
               marketplace for the buyer. And each is built to keep the connection
               inside its own walls.
             </p>
-            <p className="mt-8 text-[16px] leading-5 text-foreground/60 lg:mt-[60px] lg:text-body">
+            <p className="mt-8 text-[16px] text-foreground/60 lg:mt-[60px] lg:text-body">
               So the moment a sale closes, a gallery shuts, or a subscription
               lapses, the record fragments and the relationship goes with it. Not
               by accident. The systems were designed to sit in the middle and own
@@ -46,7 +46,7 @@ export function TheSale() {
       </div>
 
       <div className="container-aa pb-4 lg:pb-8">
-        <p className="reveal mx-auto max-w-[760px] text-center font-display text-[19px] leading-[26px] sm:text-serif-body lg:text-lead">
+        <p className="reveal mx-auto max-w-[760px] text-center font-display text-[19px] sm:text-serif-body lg:text-lead">
           The fix isn&rsquo;t a better version of these tools. It&rsquo;s
           inverting what they were built on. They ignored the relationship,
           served one role, siloed the data, trapped it, and charged for access.

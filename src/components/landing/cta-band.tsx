@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { CtaButton } from "./cta-button";
 import { SectionLink } from "./section-link";
+import { PageGuides } from "./page-guides";
 
 /** The dark closing band shared by the subpages — headline + primary CTA +
  *  whitepaper link on an ink surface. */
@@ -19,7 +20,8 @@ export function CtaBand({
   large?: boolean;
 }) {
   return (
-    <section className="bg-ink text-paper">
+    <section className="relative bg-ink text-paper">
+      <PageGuides dim />
       <div className="container-aa pb-20 pt-16 text-center lg:pb-[120px] lg:pt-[110px]">
         {eyebrow && (
           <p className="reveal text-label font-semibold uppercase tracking-[0.12em] text-paper/60">
