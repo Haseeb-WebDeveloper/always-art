@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import { FOOTER_NAV, FOOTER_LEGAL } from "@/lib/content/landing";
 import { scrollToBottom } from "@/lib/scroll";
+import { Wordmark } from "./wordmark";
 
 export function SiteFooter() {
   const [open, setOpen] = useState(false);
@@ -70,12 +71,7 @@ export function SiteFooter() {
           <div className="container-wide pt-12 lg:pt-[70px]">
             <div className="grid grid-cols-2 gap-x-10 gap-y-12 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] lg:gap-x-[60px]">
               <div className="col-span-2 lg:col-span-1">
-                <span className="block font-display text-[30px] font-light leading-none">
-                  always art
-                </span>
-                <span className="mt-2.5 block text-[11px] font-semibold uppercase tracking-[0.05em] opacity-55">
-                  A Public Benefit Corporation
-                </span>
+                <Wordmark className="text-paper" size="h-11 lg:h-12" />
                 <p className="mt-8 max-w-[300px] font-display text-serif-body leading-[26px] opacity-85">
                   Art is built to last.
                   <br />

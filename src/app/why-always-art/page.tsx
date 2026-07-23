@@ -9,6 +9,8 @@ import { TrustDiagram } from "@/components/landing/diagrams";
 
 export const metadata = buildMetadata({
   title: "Why Always Art",
+  eyebrow: "Why Always Art",
+  path: "/why-always-art",
   description:
     "A foundation is only as good as what keeps it one. Not what we promise — what we built to make the promise binding.",
 });

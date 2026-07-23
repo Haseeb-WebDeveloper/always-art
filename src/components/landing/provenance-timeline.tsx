@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 import { TIMELINE } from "@/lib/content/landing";
@@ -8,6 +8,23 @@ import { ArrowRight, Asterisk } from "./icons";
 
 export function ProvenanceTimeline() {
   const trackRef = useRef<HTMLOListElement>(null);
+  // Which edges have hidden content — drives the soft fades.
+  const [edges, setEdges] = useState({ start: true, end: false });
+
+  const updateEdges = () => {
+    const t = trackRef.current;
+    if (!t) return;
+    setEdges({
+      start: t.scrollLeft <= 1,
+      end: t.scrollLeft + t.clientWidth >= t.scrollWidth - 1,
+    });
+  };
+
+  useEffect(() => {
+    updateEdges();
+    window.addEventListener("resize", updateEdges);
+    return () => window.removeEventListener("resize", updateEdges);
+  }, []);
 
   function page(direction: 1 | -1) {
     const track = trackRef.current;
@@ -53,13 +70,11 @@ export function ProvenanceTimeline() {
         <div className="rule-dashed pointer-events-none absolute inset-x-0 top-1 z-0" />
         <ol
           ref={trackRef}
+          onScroll={updateEdges}
           className="no-scrollbar relative z-10 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth lg:gap-5"
         >
           {TIMELINE.map((event) => (
-            <li
-              key={event.year}
-              className="w-[200px] shrink-0 snap-start lg:w-[220px]"
-            >
+            <li key={event.year} className="timeline-card snap-start">
               <div className="flex w-fit items-center gap-2 bg-background pr-4">
                 <Asterisk className="shrink-0 text-foreground/40" />
                 <span className="text-[14px] font-semibold uppercase leading-[14px] text-foreground/60">
@@ -75,10 +90,18 @@ export function ProvenanceTimeline() {
             </li>
           ))}
         </ol>
+
+        {/* Subtle fades — only shown on the edge that has more content. */}
         <div
           className={cn(
-            "pointer-events-none absolute inset-y-0 right-0 z-20 hidden w-[180px] lg:block",
-            "bg-gradient-to-l from-background via-background to-transparent",
+            "pointer-events-none absolute inset-y-0 left-0 z-20 w-10 bg-gradient-to-r from-background to-transparent transition-opacity duration-300",
+            edges.start ? "opacity-0" : "opacity-100",
+          )}
+        />
+        <div
+          className={cn(
+            "pointer-events-none absolute inset-y-0 right-0 z-20 w-10 bg-gradient-to-l from-background to-transparent transition-opacity duration-300",
+            edges.end ? "opacity-0" : "opacity-100",
           )}
         />
       </div>

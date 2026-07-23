@@ -291,14 +291,35 @@
   background-color: color-mix(in srgb, var(--color-ink) 30%, transparent);
 }
 .role-title {
+  position: relative;
   width: fit-content;
 }
+/* Static slate base bar under the title. */
 .role-title::after {
   content: "";
   display: block;
   height: 5px;
-  margin-top: 16px;
+  margin-top: 6px;
   background-color: var(--color-slate);
+}
+/* Ink bar that wipes in over the slate base to highlight the active card — the
+   one showing its image. Desktop only; below lg every card shows its image so
+   there's no single "active" to single out. */
+.role-title::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 5px;
+  background-color: var(--color-ink);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 350ms var(--ease-aa);
+}
+@media (min-width: 1024px) {
+  .role-card[data-active="true"] .role-title::before {
+    transform: scaleX(1);
+  }
 }
 .role-card {
   display: flex;
@@ -404,6 +425,24 @@
 }
 .footer-toggle[aria-expanded="true"] svg {
   transform: rotate(180deg);
+}
+
+/* Provenance timeline cards — 1 (+peek) on phones, 2 on tablet, exactly 4 per
+   view on desktop. Widths in real CSS (not arbitrary Tailwind) so they survive
+   dev HMR reliably. Gaps match the strip's gap-6 / lg:gap-5. */
+.timeline-card {
+  flex: none;
+  width: 72%;
+}
+@media (min-width: 640px) {
+  .timeline-card {
+    width: calc((100% - 1.5rem) / 2);
+  }
+}
+@media (min-width: 1024px) {
+  .timeline-card {
+    width: calc((100% - 3.75rem) / 4);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

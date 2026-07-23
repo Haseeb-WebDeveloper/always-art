@@ -1,4 +1,5 @@
 import { buildMetadata } from "@/lib/seo/metadata";
+import { siteConfig } from "@/lib/config/site";
 import { SiteHeader } from "@/components/landing/site-header";
 import { Hero } from "@/components/landing/hero";
 import { RolesSection } from "@/components/landing/roles-section";
@@ -14,9 +15,32 @@ export const metadata = buildMetadata({
     "Infrastructure for the art world. Complete free tools for every role, built on one permanent shared record that stays yours.",
 });
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      name: siteConfig.name,
+      legalName: "Always Art PBC",
+      url: siteConfig.url,
+      description: siteConfig.description,
+      slogan: "Documented once. Accessible forever.",
+    },
+    {
+      "@type": "WebSite",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <SiteHeader />
       <main id="main" className="flex-1">
         <Hero />

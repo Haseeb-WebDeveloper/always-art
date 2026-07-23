@@ -6,7 +6,7 @@ export function Hero() {
   return (
     <section className="container-aa pb-16 pt-14 sm:pt-20 lg:pb-[180px] lg:pt-[77px]">
       <h1 className="reveal mx-auto max-w-[1159px] text-center display-heading text-[36px] sm:text-[56px] lg:text-[80px]">
-        The art world runs on relationships. Now its tools do too.
+        The art world runs on relationships. <br /> Now its tools do too.
       </h1>
 
       <p className="reveal mx-auto mt-8 max-w-[760px] text-balance text-center font-display text-[17px] leading-[22px] sm:text-serif-body lg:mt-[52px]">

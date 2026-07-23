@@ -9,6 +9,8 @@ import { MarketplacesDiagram } from "@/components/landing/diagrams";
 
 export const metadata = buildMetadata({
   title: "How It Works",
+  eyebrow: "How It Works",
+  path: "/how-it-works",
   description:
     "One record, built once and extended forever. Everything begins with a single record for a single work; every tool, sale and loan sits on top of it.",
 });

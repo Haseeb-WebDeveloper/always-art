@@ -8,7 +8,7 @@ export function Principles() {
       <ol className="reveal grid grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-y-[120px]">
         {PRINCIPLES.map((principle) => (
           <li key={principle.title}>
-            <h3 className="min-h-[64px] max-w-[300px] font-display text-[28px] leading-[32px] lg:min-h-[96px] lg:text-stat">
+            <h3 className="lg:min-h-[64px] max-w-[300px] font-display text-[28px] leading-[32px] lg:min-h-[96px] lg:text-stat">
               {principle.title}
             </h3>
             <p className="mt-6 text-[16px] leading-5 text-foreground/60 lg:mt-[52px] lg:text-body">

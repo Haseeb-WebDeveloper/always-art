@@ -10,6 +10,8 @@ import { RolesCarousel } from "@/components/landing/roles-carousel";
 
 export const metadata = buildMetadata({
   title: "For Every Role",
+  eyebrow: "For Every Role",
+  path: "/for-every-role",
   description:
     "Galleries, artists, collectors, fairs, estates and institutions — each its own discipline, each served without flattening any into the same thing.",
 });
