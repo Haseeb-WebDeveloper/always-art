@@ -186,7 +186,7 @@ export default function HowItWorksPage() {
               The Operating System
             </p>
             <h2 className="reveal mt-6 max-w-[900px] display-heading text-[34px] sm:text-[48px] lg:mt-8 lg:text-[56px]">
-              Run. Reach. Connect. One source beneath all three.
+              Run. Reach. Connect. <br /> One source beneath all three.
             </h2>
 
             <ol className="reveal mt-12 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8 lg:mt-[70px] lg:gap-10">

@@ -31,7 +31,7 @@ export const ROLES: Role[] = [
   {
     name: "Galleries",
     description:
-      "Forge relationships you own, not rent. Make careers and hold the provenance that proves you did it. Showcase, transact, and run your program as a team with your artists, and with the galleries you share them with. Where rosters differ, you compete on program, not on locked-in data.",
+      "Forge relationships you own, not rent. Make careers and hold the provenance that proves you did it. Showcase, transact, and run your program as a team with your artists, and with the galleries you share them with. Where rosters differ, you compete on program, not on locked in data.",
     tags: "Inventory, viewing rooms, collector pipeline, sales, portable provenance",
     image: "/images/role-galleries.webp",
   },
@@ -239,7 +239,7 @@ export const SUSTAIN_FAQS = [
     question: "How is this free?",
     answer: [
       "Because infrastructure only works if everyone can depend on it. That forces three nonnegotiables: universal, with no price gate on participation; private and secure, yours by default; and able to connect, working on its own and interoperating only when you choose.",
-      "None of them survive a company that taxes access — so the foundation and the core tools stay free, permanently.",
+      "None of them survive a company that taxes access — so the foundation and the core tools stay free, permanently",
     ],
   },
   {
