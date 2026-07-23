@@ -427,21 +427,28 @@
   transform: rotate(180deg);
 }
 
-/* Provenance timeline cards — 1 (+peek) on phones, 2 on tablet, exactly 4 per
-   view on desktop. Widths in real CSS (not arbitrary Tailwind) so they survive
-   dev HMR reliably. Gaps match the strip's gap-6 / lg:gap-5. */
+/* Provenance timeline cards — a peek carousel: cards are equal width and snap to
+   the left edge (always a full card, never half-cut), while the right edge shows
+   a partial card under a soft fade to signal more content. Widths give ~1, 2, 3
+   and 4 full cards + a peek per view. Real CSS (not arbitrary Tailwind) so they
+   survive dev HMR reliably. Gaps match the strip's gap-6 / lg:gap-5. */
 .timeline-card {
   flex: none;
-  width: 72%;
+  width: 80%;
 }
 @media (min-width: 640px) {
   .timeline-card {
-    width: calc((100% - 1.5rem) / 2);
+    width: 42%;
+  }
+}
+@media (min-width: 768px) {
+  .timeline-card {
+    width: 30%;
   }
 }
 @media (min-width: 1024px) {
   .timeline-card {
-    width: calc((100% - 3.75rem) / 4);
+    width: 22%;
   }
 }
 

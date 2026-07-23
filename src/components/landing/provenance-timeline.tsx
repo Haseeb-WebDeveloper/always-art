@@ -8,7 +8,7 @@ import { ArrowRight, Asterisk } from "./icons";
 
 export function ProvenanceTimeline() {
   const trackRef = useRef<HTMLOListElement>(null);
-  // Which edges have hidden content — drives the soft fades.
+  // Whether each edge has hidden content (drives the arrows + the right fade).
   const [edges, setEdges] = useState({ start: true, end: false });
 
   const updateEdges = () => {
@@ -26,6 +26,7 @@ export function ProvenanceTimeline() {
     return () => window.removeEventListener("resize", updateEdges);
   }, []);
 
+  // Advance by exactly one card so the left edge always lands on a full card.
   function page(direction: 1 | -1) {
     const track = trackRef.current;
     if (!track) return;
@@ -46,16 +47,18 @@ export function ProvenanceTimeline() {
             <button
               type="button"
               onClick={() => page(-1)}
+              disabled={edges.start}
               aria-label="Earlier events"
-              className="flex h-11 w-6 items-center justify-center transition-opacity hover:opacity-60"
+              className="flex h-11 w-6 items-center justify-center transition-opacity hover:opacity-60 disabled:pointer-events-none disabled:opacity-25"
             >
               <ArrowRight className="h-2.5 w-4 rotate-180" />
             </button>
             <button
               type="button"
               onClick={() => page(1)}
+              disabled={edges.end}
               aria-label="Later events"
-              className="flex h-11 w-6 items-center justify-center transition-opacity hover:opacity-60"
+              className="flex h-11 w-6 items-center justify-center transition-opacity hover:opacity-60 disabled:pointer-events-none disabled:opacity-25"
             >
               <ArrowRight className="h-2.5 w-4" />
             </button>
@@ -91,16 +94,10 @@ export function ProvenanceTimeline() {
           ))}
         </ol>
 
-        {/* Subtle fades — only shown on the edge that has more content. */}
+        {/* Soft fade on the right only — hints at the peeking next card. */}
         <div
           className={cn(
-            "pointer-events-none absolute inset-y-0 left-0 z-20 w-10 bg-gradient-to-r from-background to-transparent transition-opacity duration-300",
-            edges.start ? "opacity-0" : "opacity-100",
-          )}
-        />
-        <div
-          className={cn(
-            "pointer-events-none absolute inset-y-0 right-0 z-20 w-10 bg-gradient-to-l from-background to-transparent transition-opacity duration-300",
+            "pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-background to-transparent transition-opacity duration-300",
             edges.end ? "opacity-0" : "opacity-100",
           )}
         />
